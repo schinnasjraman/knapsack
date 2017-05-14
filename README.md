@@ -15,4 +15,11 @@ MemoizationUtil.java
   1) identify bin no.
   2) load the bins which gives floor entry for the impression queried and return the value.
 
+RevenueOptimization.java
+
+  This class checks for maximum profit for given impression count.
+
+  only monetizable impression counts are considered.
+
+
 
