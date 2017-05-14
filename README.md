@@ -4,7 +4,8 @@ Knapsack problem for large values.
 example use case : video ad campaigns with forecasted impressions.
 
 MemoizationUtil.java
-  This class helps in maintaining low memory footprint for the memoization table( map in our case )
+  This class helps in maintaining low memory footprint for the memoization table( map in our case ).
+
   for update :
   1) identify bin no
   2) check if bin no is seen before.
@@ -21,5 +22,25 @@ RevenueOptimization.java
 
   only monetizable impression counts are considered.
 
+Constants.java
+
+ 1) input/output location.
+ 2) bin on disk location.( for memoization )
+ 2) bin size and no of bins. ( for memoization )
 
 
+Input file format:
+
+2000000000 // forecasted impression
+Acme,1000000,5000 // advertiser name, no of impression per campaign, revenue for the campaign
+Lorem,2000000,9000
+Ipsum,3000000,20000
+
+
+output file format:
+
+Sample result 3
+Acme,2,2000000,10000 //advertiser name, no of campaigns, total impressions, total revenue
+Lorem,0,0,0
+Ipsum,666,1998000000,13320000
+2000000000,13330000 // overall total impression, total revenue.

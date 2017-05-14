@@ -24,29 +24,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CampaignRevenueCombination.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/model/CampaignRevenueCombination.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="39" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="39" />
-              <folding>
-                <element signature="e#301#302#0" expanded="true" />
-                <element signature="e#341#342#0" expanded="true" />
-                <element signature="e#408#409#0" expanded="true" />
-                <element signature="e#466#467#0" expanded="true" />
-                <element signature="e#517#518#0" expanded="true" />
-                <element signature="e#555#556#0" expanded="true" />
-                <element signature="e#626#627#0" expanded="true" />
-                <element signature="e#680#681#0" expanded="true" />
-                <element signature="e#717#718#0" expanded="true" />
-                <element signature="e#750#751#0" expanded="true" />
-                <element signature="e#802#803#0" expanded="true" />
-                <element signature="e#846#847#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CampaignDetails.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/model/CampaignDetails.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -94,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/model/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+              <caret line="9" column="51" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -128,8 +105,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33665836">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.8416459">
+              <caret line="45" column="63" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -182,7 +159,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/model/CampaignCombination.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="32" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="32" />
+              <caret line="56" column="41" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="41" />
               <folding>
                 <element signature="e#1593#1594#0" expanded="true" />
                 <element signature="e#1628#1629#0" expanded="true" />
@@ -374,6 +351,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Knapsack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Knapsack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ooyala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -687,12 +694,12 @@
       <created>1494675758622</created>
       <option name="number" value="Default" />
       <updated>1494675758622</updated>
-      <workItem from="1494675764238" duration="31665000" />
+      <workItem from="1494675764238" duration="31927000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31665000" />
+    <option name="totallyTimeSpent" value="31927000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -831,6 +838,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/util/FileUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/util/MemoizationUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="27" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1087#1093#0" expanded="true" />
+            <element signature="e#2041#2068#0" expanded="true" />
+            <element signature="e#4710#4711#0" expanded="true" />
+            <element signature="e#4783#4784#0" expanded="true" />
+            <element signature="e#6311#6312#0" expanded="true" />
+            <element signature="e#6358#6359#0" expanded="true" />
+            <element signature="e#6407#6408#0" expanded="true" />
+            <element signature="e#6474#6475#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/RevenueOptimization.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#676#693#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/model/CampaignCombination.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="56" column="41" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="41" />
+          <folding>
+            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#1628#1629#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/model/CampaignDetails.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -872,89 +929,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/util/FileUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="50" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/model/CampaignCombination.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="32" />
-          <folding>
-            <element signature="e#1593#1594#0" expanded="true" />
-            <element signature="e#1628#1629#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/model/CampaignRevenueCombination.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="39" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="39" />
-          <folding>
-            <element signature="e#301#302#0" expanded="true" />
-            <element signature="e#341#342#0" expanded="true" />
-            <element signature="e#408#409#0" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
-            <element signature="e#517#518#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#626#627#0" expanded="true" />
-            <element signature="e#680#681#0" expanded="true" />
-            <element signature="e#717#718#0" expanded="true" />
-            <element signature="e#750#751#0" expanded="true" />
-            <element signature="e#802#803#0" expanded="true" />
-            <element signature="e#846#847#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/model/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+          <caret line="9" column="51" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="51" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/util/MemoizationUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="27" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1087#1093#0" expanded="true" />
-            <element signature="e#2041#2068#0" expanded="true" />
-            <element signature="e#4710#4711#0" expanded="true" />
-            <element signature="e#4783#4784#0" expanded="true" />
-            <element signature="e#6311#6312#0" expanded="true" />
-            <element signature="e#6358#6359#0" expanded="true" />
-            <element signature="e#6407#6408#0" expanded="true" />
-            <element signature="e#6474#6475#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/RevenueOptimization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="32" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#676#693#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33665836">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.8416459">
+          <caret line="45" column="63" selection-start-line="45" selection-start-column="63" selection-end-line="45" selection-end-column="63" />
           <folding />
         </state>
       </provider>
