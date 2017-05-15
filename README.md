@@ -13,6 +13,7 @@ example use case : video ad campaigns with forecasted impressions.
   If we want to find the max value for, say 7, identify the first lowest number below 7 and return its value.
 
 > MemoizationUtil.java
+
   This class helps in maintaining low memory footprint for the memoization table( map in our case ).
 
   for update :
@@ -27,28 +28,28 @@ example use case : video ad campaigns with forecasted impressions.
 
 
 
-Constants.java
+> Constants.java
 
  1) input/output location.
  2) bin on disk location.( for memoization )
  2) bin size and no of bins. ( for memoization )
 
 
-Input file format:
+> Input file format:
 
-2000000000 // forecasted impression
-Acme,1000000,5000 // advertiser name, no of impression per campaign, revenue for the campaign
-Lorem,2000000,9000
-Ipsum,3000000,20000
+> 2000000000 // forecasted impression
+> Acme,1000000,5000 // advertiser name, no of impression per campaign, revenue for the campaign
+> Lorem,2000000,9000
+> Ipsum,3000000,20000
 
 
-output file format:
+> output file format:
 
-Sample result 3
-Acme,2,2000000,10000 //advertiser name, no of campaigns, total impressions, total revenue
-Lorem,0,0,0
-Ipsum,666,1998000000,13320000
-2000000000,13330000 // overall total impression, total revenue.
+> Sample result 3
+> Acme,2,2000000,10000 //advertiser name, no of campaigns, total impressions, total revenue
+> Lorem,0,0,0
+> Ipsum,666,1998000000,13320000
+> 2000000000,13330000 // overall total impression, total revenue.
 
 
 
