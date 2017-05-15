@@ -3,6 +3,15 @@ Knapsack problem for large values.
 
 example use case : video ad campaigns with forecasted impressions.
 
+RevenueOptimization.java
+
+  This class checks for maximum profit for given impression count.
+
+  only monetizable impression counts are considered.
+
+  for ex. if the knpasack weigh is 10 and you have 3 and 4 as item weights, you have to go over the points 3, 4, 6, 8, 9.
+  If we want to find the max value for, say 7, identify the first lowest number below 7 and return its value.
+
 MemoizationUtil.java
   This class helps in maintaining low memory footprint for the memoization table( map in our case ).
 
@@ -16,11 +25,7 @@ MemoizationUtil.java
   1) identify bin no.
   2) load the bins which gives floor entry for the impression queried and return the value.
 
-RevenueOptimization.java
 
-  This class checks for maximum profit for given impression count.
-
-  only monetizable impression counts are considered.
 
 Constants.java
 
@@ -44,3 +49,6 @@ Acme,2,2000000,10000 //advertiser name, no of campaigns, total impressions, tota
 Lorem,0,0,0
 Ipsum,666,1998000000,13320000
 2000000000,13330000 // overall total impression, total revenue.
+
+
+
