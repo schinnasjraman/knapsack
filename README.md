@@ -3,7 +3,7 @@ Knapsack problem for large values.
 
 example use case : video ad campaigns with forecasted impressions.
 
-> RevenueOptimization.java
+> # RevenueOptimization.java
 
   This class checks for maximum profit for given impression count.
 
@@ -37,7 +37,7 @@ example use case : video ad campaigns with forecasted impressions.
 
 > Input file format:
 
-> 2000000000 // forecasted impression \n
+> 2000000000 // forecasted impression
 > Acme,1000000,5000 // advertiser name, no of impression per campaign, revenue for the campaign
 > Lorem,2000000,9000
 > Ipsum,3000000,20000
