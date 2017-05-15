@@ -12,7 +12,7 @@ example use case : video ad campaigns with forecasted impressions.
   for ex. if the knpasack weigh is 10 and you have 3 and 4 as item weights, you have to go over the points 3, 4, 6, 8, 9.
   If we want to find the max value for, say 7, identify the first lowest number below 7 and return its value.
 
-> MemoizationUtil.java
+> # MemoizationUtil.java
 
   This class helps in maintaining low memory footprint for the memoization table( map in our case ).
 
@@ -28,14 +28,14 @@ example use case : video ad campaigns with forecasted impressions.
 
 
 
-> Constants.java
+> # Constants.java
 
  1) input/output location.
  2) bin on disk location.( for memoization )
  2) bin size and no of bins. ( for memoization )
 
 
-> Input file format:
+> # Input file format:
 
 > 2000000000 // forecasted impression
 > Acme,1000000,5000 // advertiser name, no of impression per campaign, revenue for the campaign
@@ -43,7 +43,8 @@ example use case : video ad campaigns with forecasted impressions.
 > Ipsum,3000000,20000
 
 
-> output file format:
+
+> # output file format:
 
 > Sample result 3
 > Acme,2,2000000,10000 //advertiser name, no of campaigns, total impressions, total revenue
