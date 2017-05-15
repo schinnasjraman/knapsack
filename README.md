@@ -37,20 +37,21 @@ example use case : video ad campaigns with forecasted impressions.
 
 > # Input file format:
 
-> 2000000000 // forecasted impression
-> Acme,1000000,5000 // advertiser name, no of impression per campaign, revenue for the campaign
-> Lorem,2000000,9000
-> Ipsum,3000000,20000
+* 2000000000 // forecasted impression
+* Acme,1000000,5000 // advertiser name, no of impression per campaign, revenue for the campaign
+* Lorem,2000000,9000
+* Ipsum,3000000,20000
 
 
 
 > # output file format:
 
-> Sample result 3
-> Acme,2,2000000,10000 //advertiser name, no of campaigns, total impressions, total revenue
-> Lorem,0,0,0
-> Ipsum,666,1998000000,13320000
-> 2000000000,13330000 // overall total impression, total revenue.
+
+* Sample result 3
+* Acme,2,2000000,10000 //advertiser name, no of campaigns, total impressions, total revenue
+* Lorem,0,0,0
+* Ipsum,666,1998000000,13320000
+* 2000000000,13330000 // overall total impression, total revenue.
 
 
 
