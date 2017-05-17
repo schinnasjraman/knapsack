@@ -11,6 +11,7 @@ public class CampaignDetails implements Serializable {
     Long impressionsPerCampaign;
     Double revenuePerCampaign;
     String id;
+    String originalId;
     String type = "O";
     Long maxBound = 0l;
     String name;
@@ -103,5 +104,13 @@ public class CampaignDetails implements Serializable {
 
     public String toString() {
         return name + "," + totalNoOfCampaigns + "," + totalNoOfImpressions + "," + String.format("%.5f",totalRevenue);
+    }
+
+    public String getOriginalId() {
+        return originalId;
+    }
+
+    public void setOriginalId(String originalId) {
+        this.originalId = originalId;
     }
 }

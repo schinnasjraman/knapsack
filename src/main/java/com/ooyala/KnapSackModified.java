@@ -1,9 +1,10 @@
 package com.ooyala;
 
+import com.google.gson.Gson;
 import com.ooyala.model.CampaignCombination;
 import com.ooyala.model.CampaignDetails;
 import com.ooyala.model.Constants;
-import com.ooyala.util.MemoizationUtil;
+import com.ooyala.util.NormalMemoizationUtil;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -11,17 +12,19 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 /**
  * Created by schinnas on 5/13/17.
  */
 
-public class RevenueOptimization {
+public class KnapSackModified {
 
-    MemoizationUtil memoizationUtil = new MemoizationUtil();
+    NormalMemoizationUtil memoizationUtil = new NormalMemoizationUtil();
 
     Map<String, CampaignDetails> idCampaignMap = new HashMap();
 
@@ -31,35 +34,73 @@ public class RevenueOptimization {
 
     private CampaignCombination maxRevenue(List<CampaignDetails> campaignDetailsList, Long forecastedImpressions) {
 
-//        forecastedImpressions = 3000000l;
+        TreeSet<Long> remainderSet = new TreeSet<Long>();
 
-        List<Long> campaignCombination = getAllCampaignImpressionList(campaignDetailsList, forecastedImpressions);
+        /** identify if scaling is necessary for speedy computation. **/
 
-        Long lastCalculatedValue = 0l;
+        /**
+         * for e.x. if 1 is item weight and knapsack capacity is 1 billion. scale up 1 item weight to 1 million and do the computation.
+         */
 
-        System.out.println("lastCalculatedValue = " + lastCalculatedValue);
+        List<CampaignDetails> scaledCampaignList = new ArrayList<CampaignDetails>();
 
-        /** for every monetizable impression count, identify the max revenue **/
+        for (CampaignDetails campaignDetails : campaignDetailsList) {
 
-        for (Long currentCapacity : campaignCombination) {
-            {
-                System.out.println("Input=" + currentCapacity);
+            Long scalingFactor = forecastedImpressions / campaignDetails.getImpressionsPerCampaign();
 
-                int count = 1;
-                {
-                    while (count * currentCapacity <= forecastedImpressions) {
-                        updateMaxPossibleRevenueForTheCapacity(count * currentCapacity, campaignDetailsList);
-                        count++;
-                    }
-                }
+            if (scalingFactor > Constants.SCALING_FACTOR) {
+                CampaignDetails campaignDetails1 = new CampaignDetails(campaignDetails.getName(), scalingFactor * campaignDetails.getImpressionsPerCampaign(), scalingFactor * campaignDetails.getRevenuePerCampaign());
+                campaignDetails1.setOriginalId(campaignDetails.getOriginalId());
+                campaignDetails1.setType("I");
+                idCampaignMap.put(campaignDetails1.getId(), campaignDetails1);
+                scaledCampaignList.add(campaignDetails1);
+
+            } else {
+                scaledCampaignList.add(campaignDetails);
             }
         }
 
-        updateMaxPossibleRevenueForTheCapacity(forecastedImpressions, campaignDetailsList);
+        /**
+         *
+         * identify possible remainders with scaled up campaigns.
+         */
 
-        return memoizationUtil.getRevenue(forecastedImpressions);
+        for (CampaignDetails campaignDetails : scaledCampaignList) {
+
+            Long remainder = forecastedImpressions % campaignDetails.getImpressionsPerCampaign();
+            remainderSet.add(remainder);
+        }
+
+        /**
+         *
+         * identify possible remainders with scaled up campaigns.
+         */
+
+
+        TreeSet<Long> campaignCombination = getAllCampaignImpressionList1(scaledCampaignList, forecastedImpressions);
+
+        Long count = 1l;
+
+        /** with highest remainder seen, do knapsack for original campaign list. The data produced here will be used in next step **/
+
+        while (count <= remainderSet.last()) {
+            updateMaxPossibleRevenueForTheCapacity(count, campaignDetailsList, false);
+            count++;
+        }
+
+        /** for all the possible data points, do the knapsack problem with scaled campaign list **/
+
+        for (Long currentCapacity : campaignCombination) {
+            updateMaxPossibleRevenueForTheCapacity(currentCapacity, scaledCampaignList, false);
+        }
+
+        updateMaxPossibleRevenueForTheCapacity(forecastedImpressions, scaledCampaignList, false);
+
+        /** return revenue **/
+        return memoizationUtil.getRevenue(forecastedImpressions, false);
 
     }
+
 
     private CampaignCombination getMaxRevenue() {
 
@@ -67,7 +108,7 @@ public class RevenueOptimization {
     }
 
 
-    private void updateMaxPossibleRevenueForTheCapacity(Long currentCapacity, List<CampaignDetails> campaignDetailsList) {
+    private void updateMaxPossibleRevenueForTheCapacity(Long currentCapacity, List<CampaignDetails> campaignDetailsList, Boolean debug) {
 
         Double currentMaxValue = 0.0;
 
@@ -79,7 +120,11 @@ public class RevenueOptimization {
 
                 Double revenueForRemainingImpression = 0.0d;
 
-                CampaignCombination campaignCombination = memoizationUtil.getRevenue(remainingImpressions);
+                if (debug) {
+                    System.out.println(" currentCapacity =" + currentCapacity + " remainingImpressions =" + remainingImpressions + " campaignDetails.getImpressionsPerCampaign() " + campaignDetails.getImpressionsPerCampaign());
+                }
+
+                CampaignCombination campaignCombination = memoizationUtil.getRevenue(remainingImpressions, debug);
 
                 if (campaignCombination != null) {
 
@@ -101,7 +146,7 @@ public class RevenueOptimization {
 
                     newcampaignCombination.addCampaign(campaignDetails, currentMaxValue);
 
-                    memoizationUtil.updateRevenue(newcampaignCombination, currentCapacity);
+                    memoizationUtil.updateRevenue(newcampaignCombination, currentCapacity, debug);
 
                 }
             }
@@ -109,9 +154,9 @@ public class RevenueOptimization {
 
     }
 
-    private List<Long> getAllCampaignImpressionList(List<CampaignDetails> campaignDetailsList, Long weightCapacity) {
+    private TreeSet<Long> getAllCampaignImpressionList(List<CampaignDetails> campaignDetailsList, Long weightCapacity) {
 
-        List<Long> campaignCombination = new ArrayList();
+        TreeSet<Long> campaignCombination = new TreeSet();
 
         for (CampaignDetails campaignDetails : campaignDetailsList) {
 
@@ -121,6 +166,26 @@ public class RevenueOptimization {
 
             if (campaignDetails.getRevenuePerCampaign() > 0)
                 campaignCombination.add(campaignDetails.getImpressionsPerCampaign());
+        }
+
+        return campaignCombination;
+
+    }
+
+    private TreeSet<Long> getAllCampaignImpressionList1(List<CampaignDetails> campaignDetailsList, Long weightCapacity) {
+
+        TreeSet<Long> campaignCombination = new TreeSet();
+
+        for (CampaignDetails campaignDetails : campaignDetailsList) {
+
+            Long count = 0l;
+
+            while (campaignDetails.getImpressionsPerCampaign() * count <= weightCapacity) {
+                if (campaignDetails.getImpressionsPerCampaign() * count > 0) {
+                    campaignCombination.add(campaignDetails.getImpressionsPerCampaign() * count);
+                }
+                count++;
+            }
         }
 
         return campaignCombination;
@@ -170,6 +235,15 @@ public class RevenueOptimization {
 
             CampaignDetails campaignDetails = idCampaignMap.get(key);
 
+            String type = campaignDetails.getType();
+
+            if (type.equals("I")) {
+
+                Integer totalNoOfCampaign = idToNoOfCampaignMap.get(key) * Constants.SCALING_FACTOR.intValue();
+                String originalId = campaignDetails.getOriginalId();
+                CampaignDetails originalCampaignDetails = idCampaignMap.get(originalId);
+                originalCampaignDetails.setTotalNoOfCampaigns(originalCampaignDetails.getTotalNoOfCampaigns() + totalNoOfCampaign);
+            }
             campaignDetails.setTotalNoOfCampaigns(idToNoOfCampaignMap.get(key));
         }
 
@@ -178,6 +252,7 @@ public class RevenueOptimization {
     private void writeToOutputFile(CampaignCombination campaignCombination) {
 
         try {
+
             Writer fileWriter = new FileWriter(Constants.OUTPUT_FILE, false);
 
             for (CampaignDetails campaignDetails : campaignDetailsList) {
@@ -202,14 +277,17 @@ public class RevenueOptimization {
 
         CampaignCombination campaignCombination = getMaxRevenue();
 
+        System.out.println(new Gson().toJson(campaignCombination));
+
         identifyNoOfCampaignsPerAdvertiser(campaignCombination);
 
         writeToOutputFile(campaignCombination);
+
     }
 
     public static void main(String... args) {
 
-        RevenueOptimization revenueOptimization = new RevenueOptimization();
+        KnapSackModified revenueOptimization = new KnapSackModified();
 
         revenueOptimization.identifyMaximumRevenue(Constants.INPUT_FILE);
 

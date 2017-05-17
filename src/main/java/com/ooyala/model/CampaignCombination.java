@@ -9,7 +9,7 @@ import java.util.function.BiConsumer;
  * Created by schinnas on 5/13/17.
  */
 
-public class CampaignCombination implements Serializable{
+public class CampaignCombination implements Serializable {
 
     public Map<String, Integer> advertiserToNoOfCampaignMap = new HashMap<String, Integer>();
 
@@ -68,5 +68,11 @@ public class CampaignCombination implements Serializable{
         campaignCollection.totalNoOfImpression = totalNoOfImpression.longValue();
         campaignCollection.totalRevenue = totalRevenue.doubleValue();
         return campaignCollection;
+    }
+
+    public String toString() {
+
+        return String.format("%.5f",totalRevenue);
+
     }
 }

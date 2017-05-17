@@ -119,22 +119,28 @@ public class MemoizationUtil {
 
             CampaignCombination campaignCombination = null;
 
-            for (Long seenBinNo : seenBins.descendingSet()) {
+//            TreeSet<Long> subSet = new TreeSet(seenBins.subSet(seenBins.first(), true, binToSearch, true));
 
-                if (seenBinNo <= binToSearch) {
+            for (Long seenBinNo : seenBins.descendingSet())
 
-                    if (!isBinInMemory(seenBinNo)) {
-                        loadBinInMemory(seenBinNo);
-                    }
+//                for (Long seenBinNo : seenBins.descendingSet())
 
-                    TreeMap<Long, CampaignCombination> impressionToMaxRevenue = getValueForBin(seenBinNo);
+                {
 
-                    if (impressionToMaxRevenue != null && impressionToMaxRevenue.floorEntry(impression) != null) {
-                        campaignCombination = impressionToMaxRevenue.floorEntry(impression).getValue().getNewCopy();
-                        return campaignCombination;
+                    if (seenBinNo <= binToSearch) {
+
+                        if (!isBinInMemory(seenBinNo)) {
+                            loadBinInMemory(seenBinNo);
+                        }
+
+                        TreeMap<Long, CampaignCombination> impressionToMaxRevenue = getValueForBin(seenBinNo);
+
+                        if (impressionToMaxRevenue != null && impressionToMaxRevenue.floorEntry(impression) != null) {
+                            campaignCombination = impressionToMaxRevenue.floorEntry(impression).getValue().getNewCopy();
+                            return campaignCombination;
+                        }
                     }
                 }
-            }
 
             return campaignCombination;
 
