@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4c396a05-b1db-4f18-96b4-21098815d3be" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ooyala/KnapSackModified.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_math3_3_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/ooyala/util/NormalMemoizationUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ooyala/model/CampaignCombination.java" afterPath="$PROJECT_DIR$/src/main/java/com/ooyala/model/CampaignCombination.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ooyala/model/CampaignDetails.java" afterPath="$PROJECT_DIR$/src/main/java/com/ooyala/model/CampaignDetails.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ooyala/model/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/com/ooyala/model/Constants.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Knapsack.iml" afterPath="$PROJECT_DIR$/Knapsack.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ooyala/util/MemoizationUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/ooyala/util/MemoizationUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ooyala/RevenueOptimization.java" afterPath="$PROJECT_DIR$/src/main/java/com/ooyala/RevenueOptimization.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ooyala/KnapSackModified.java" afterPath="$PROJECT_DIR$/src/main/java/com/ooyala/KnapSackModified.java" />
     </list>
     <ignored path="Knapsack.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,8 +56,8 @@
       <file leaf-file-name="KnapSackModified.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/KnapSackModified.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.694514">
-              <caret line="251" column="36" selection-start-line="251" selection-start-column="36" selection-end-line="251" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.6733167">
+              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#772#789#0" expanded="true" />
@@ -221,20 +210,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Knapsack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Knapsack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Knapsack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -758,12 +733,12 @@
       <created>1494675758622</created>
       <option name="number" value="Default" />
       <updated>1494675758622</updated>
-      <workItem from="1494675764238" duration="58140000" />
+      <workItem from="1494675764238" duration="58385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58140000" />
+    <option name="totallyTimeSpent" value="58385000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1056,8 +1031,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ooyala/KnapSackModified.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.694514">
-          <caret line="251" column="36" selection-start-line="251" selection-start-column="36" selection-end-line="251" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.6733167">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#772#789#0" expanded="true" />

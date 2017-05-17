@@ -73,7 +73,7 @@ public class KnapSackModified {
 
         /**
          *
-         * identify possible remainders with scaled up campaigns.
+         * identify possible data points with scaled up campaigns.
          */
 
 
