@@ -2,5 +2,5 @@
 Acme,1,0
 Lorem,2,2
 Ipsum,3,2
-Dolor,70000,71000
-Mauris,49000000,50000000
+Dolor,7,71000
+Mauris,49,50000000

@@ -8,7 +8,9 @@ import com.google.gson.Gson;
 import com.ooyala.model.CampaignCombination;
 import com.ooyala.model.Constants;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -43,9 +45,11 @@ public class NormalMemoizationUtil {
 
     }
 
-    public CampaignCombination getLastRevenue(Long impression, Boolean debug) {
+    public List<CampaignCombination> getLastRevenue(Long impression, Boolean debug) {
 
-        CampaignCombination campaignCombination = null;
+        List<CampaignCombination> campaignCombinationList = new ArrayList<CampaignCombination>();
+
+        CampaignCombination campaignCombination=null;
 
         Double revenue = 0d;
 
@@ -68,6 +72,8 @@ public class NormalMemoizationUtil {
 
                 impression = impression - campaignCombination.getTotalNoOfImpression();
 
+                campaignCombinationList.add(campaignCombination);
+
                 System.out.println(impression);
 
             }else{
@@ -78,7 +84,7 @@ public class NormalMemoizationUtil {
 
         System.out.println("revenue-"+revenue);
 
-        return null;
+        return campaignCombinationList;
 
     }
 

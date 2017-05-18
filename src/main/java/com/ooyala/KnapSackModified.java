@@ -32,7 +32,7 @@ public class KnapSackModified {
 
     Long forecastedImpressions = 0l;
 
-    private CampaignCombination maxRevenue(List<CampaignDetails> campaignDetailsList, Long forecastedImpressions) {
+    private List<CampaignCombination> maxRevenue(List<CampaignDetails> campaignDetailsList, Long forecastedImpressions) {
 
         TreeSet<Long> remainderSet = new TreeSet<Long>();
 
@@ -49,8 +49,8 @@ public class KnapSackModified {
             Long scalingFactor = forecastedImpressions / campaignDetails.getImpressionsPerCampaign();
 
             if (scalingFactor > Constants.SCALING_FACTOR) {
-                CampaignDetails campaignDetails1 = new CampaignDetails(campaignDetails.getName(), scalingFactor * campaignDetails.getImpressionsPerCampaign(), scalingFactor * campaignDetails.getRevenuePerCampaign());
-                campaignDetails1.setOriginalId(campaignDetails.getOriginalId());
+                CampaignDetails campaignDetails1 = new CampaignDetails(campaignDetails.getName(), Constants.SCALING_FACTOR * campaignDetails.getImpressionsPerCampaign(), Constants.SCALING_FACTOR * campaignDetails.getRevenuePerCampaign());
+                campaignDetails1.setOriginalId(campaignDetails.getId());
                 campaignDetails1.setType("I");
                 idCampaignMap.put(campaignDetails1.getId(), campaignDetails1);
                 scaledCampaignList.add(campaignDetails1);
@@ -59,6 +59,8 @@ public class KnapSackModified {
                 scaledCampaignList.add(campaignDetails);
             }
         }
+
+        System.out.println("scaledCampaignList=" + scaledCampaignList);
 
         /**
          *
@@ -71,11 +73,11 @@ public class KnapSackModified {
             remainderSet.add(remainder);
         }
 
+        System.out.println("remainder set " + remainderSet);
         /**
          *
          * identify possible data points with scaled up campaigns.
          */
-
 
         TreeSet<Long> campaignCombination = getAllCampaignImpressionList1(scaledCampaignList, forecastedImpressions);
 
@@ -88,21 +90,26 @@ public class KnapSackModified {
             count++;
         }
 
+        memoizationUtil.printDetails(true);
+
+        System.out.println("campaignCombination=" + campaignCombination);
+
+
         /** for all the possible data points, do the knapsack problem with scaled campaign list **/
 
         for (Long currentCapacity : campaignCombination) {
             updateMaxPossibleRevenueForTheCapacity(currentCapacity, scaledCampaignList, false);
         }
 
-        updateMaxPossibleRevenueForTheCapacity(forecastedImpressions, scaledCampaignList, false);
+        updateMaxPossibleRevenueForTheCapacity(forecastedImpressions, scaledCampaignList, true);
 
         /** return revenue **/
-        return memoizationUtil.getRevenue(forecastedImpressions, false);
+        return memoizationUtil.getLastRevenue(forecastedImpressions, false);
 
     }
 
 
-    private CampaignCombination getMaxRevenue() {
+    private List<CampaignCombination> getMaxRevenue() {
 
         return maxRevenue(campaignDetailsList, forecastedImpressions);
     }
@@ -227,7 +234,45 @@ public class KnapSackModified {
         }
     }
 
+    private CampaignCombination getOneCampaignCombination(List<CampaignCombination> campaignCombinationList) {
+
+        CampaignCombination newCampaignCombination = new CampaignCombination();
+
+        Map<String, Integer> advertiserToNoOfCampaignMap = new HashMap<String, Integer>();
+        Long totalNoOfImpression = 0l;
+        Double totalRevenue = 0.0;
+
+        for (CampaignCombination campaignCombination : campaignCombinationList) {
+
+            Map<String, Integer> mapEntry = campaignCombination.getAdvertiserToNoOfCampaignMap();
+
+            for (Map.Entry<String, Integer> entry : mapEntry.entrySet()) {
+
+                if (advertiserToNoOfCampaignMap.containsKey(entry.getKey())) {
+                    Integer val = advertiserToNoOfCampaignMap.get(entry.getKey());
+                    advertiserToNoOfCampaignMap.put(entry.getKey(), val + entry.getValue());
+                } else {
+                    advertiserToNoOfCampaignMap.put(entry.getKey(), entry.getValue());
+                }
+            }
+
+            totalNoOfImpression = totalNoOfImpression + campaignCombination.getTotalNoOfImpression();
+            totalRevenue = totalRevenue + campaignCombination.getTotalRevenue();
+
+        }
+
+        newCampaignCombination.setTotalNoOfImpression(totalNoOfImpression);
+        newCampaignCombination.setAdvertiserToNoOfCampaignMap(advertiserToNoOfCampaignMap);
+        newCampaignCombination.setTotalRevenue(totalRevenue);
+
+
+        return newCampaignCombination;
+    }
+
     private void identifyNoOfCampaignsPerAdvertiser(CampaignCombination campaignCombination) {
+
+
+        System.out.println("idCampaignMap=" + idCampaignMap + "  campaignCombination " + campaignCombination);
 
         Map<String, Integer> idToNoOfCampaignMap = campaignCombination.getAdvertiserToNoOfCampaignMap();
 
@@ -248,6 +293,7 @@ public class KnapSackModified {
         }
 
     }
+
 
     private void writeToOutputFile(CampaignCombination campaignCombination) {
 
@@ -275,9 +321,11 @@ public class KnapSackModified {
 
         createIdCampaignMap(); // just for easier access.
 
-        CampaignCombination campaignCombination = getMaxRevenue();
+        List<CampaignCombination> campaignCombinationList = getMaxRevenue();
 
-        System.out.println(new Gson().toJson(campaignCombination));
+        System.out.println(new Gson().toJson(campaignCombinationList));
+
+        CampaignCombination campaignCombination = getOneCampaignCombination(campaignCombinationList);
 
         identifyNoOfCampaignsPerAdvertiser(campaignCombination);
 
