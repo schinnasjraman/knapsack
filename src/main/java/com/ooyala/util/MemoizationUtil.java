@@ -61,6 +61,8 @@ public class MemoizationUtil {
 
         if (isBinSeenBefore(binNo)) {
             if (!isBinInMemory(binNo)) {
+                System.out.println(isBinInMemory(binNo));
+
                 loadBinInMemory(binNo);
             }
         } else {
@@ -98,7 +100,11 @@ public class MemoizationUtil {
 
         if (binNo.longValue() == firstBin.longValue()) {
 
+
             if (!isBinInMemory(binNo)) {
+
+//                System.out.println("Get Revenue " + isBinInMemory(binNo) + " Bin No " + binNo);
+
                 loadBinInMemory(binNo);
             }
 
@@ -115,6 +121,8 @@ public class MemoizationUtil {
             return campaignCombination;
         } else {
 
+//            System.out.println("Get Revenue 2 " + isBinInMemory(binNo) + "  " + binNo);
+
             Long binToSearch = binNo.longValue();
 
             CampaignCombination campaignCombination = null;
@@ -125,22 +133,25 @@ public class MemoizationUtil {
 
 //                for (Long seenBinNo : seenBins.descendingSet())
 
-                {
+            {
 
-                    if (seenBinNo <= binToSearch) {
+                if (seenBinNo <= binToSearch) {
 
-                        if (!isBinInMemory(seenBinNo)) {
-                            loadBinInMemory(seenBinNo);
-                        }
+                    if (!isBinInMemory(seenBinNo)) {
 
-                        TreeMap<Long, CampaignCombination> impressionToMaxRevenue = getValueForBin(seenBinNo);
+//                        System.out.println("Get Revenue 2 seenBinNo" + isBinInMemory(seenBinNo) + "  " + seenBinNo);
 
-                        if (impressionToMaxRevenue != null && impressionToMaxRevenue.floorEntry(impression) != null) {
-                            campaignCombination = impressionToMaxRevenue.floorEntry(impression).getValue().getNewCopy();
-                            return campaignCombination;
-                        }
+                        loadBinInMemory(seenBinNo);
+                    }
+
+                    TreeMap<Long, CampaignCombination> impressionToMaxRevenue = getValueForBin(seenBinNo);
+
+                    if (impressionToMaxRevenue != null && impressionToMaxRevenue.floorEntry(impression) != null) {
+                        campaignCombination = impressionToMaxRevenue.floorEntry(impression).getValue().getNewCopy();
+                        return campaignCombination;
                     }
                 }
+            }
 
             return campaignCombination;
 
@@ -165,7 +176,7 @@ public class MemoizationUtil {
     }
 
     private Boolean isBinCacheFull() {
-        return impressionToMaxRevenueBin.size() >= MAX_NO_OF_BINS;
+        return impressionToMaxRevenueBin.size() == MAX_NO_OF_BINS;
     }
 
     private String getFileName(Long binNo) {
@@ -191,6 +202,8 @@ public class MemoizationUtil {
     }
 
     private void evictLeastRecentlyUsedBin() {
+
+        System.out.println("evictLeastRecentlyUsedBin" +  isBinCacheFull());
 
         Long leastTime = Long.MAX_VALUE;
         Long leastKey = -1l;

@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 /**
  * Created by schinnas on 5/13/17.
@@ -33,7 +34,7 @@ public class RevenueOptimization {
 
 //        forecastedImpressions = 3000000l;
 
-        List<Long> campaignCombination = getAllCampaignImpressionList(campaignDetailsList, forecastedImpressions);
+        TreeSet<Long> campaignCombination = getAllCampaignImpressionList(campaignDetailsList, forecastedImpressions);
 
         Long lastCalculatedValue = 0l;
 
@@ -41,14 +42,16 @@ public class RevenueOptimization {
 
         /** for every monetizable impression count, identify the max revenue **/
 
-        for (Long currentCapacity : campaignCombination) {
+        //for (Long currentCapacity : campaignCombination)
+        {
             {
-                System.out.println("Input=" + currentCapacity);
+//                System.out.println("Input=" + currentCapacity);
 
-                int count = 1;
+                Long count = campaignCombination.first() - 1;
                 {
-                    while (count * currentCapacity <= forecastedImpressions) {
-                        updateMaxPossibleRevenueForTheCapacity(count * currentCapacity, campaignDetailsList);
+                    //  while (count * currentCapacity <= forecastedImpressions)
+                    while (count <= forecastedImpressions) {
+                        updateMaxPossibleRevenueForTheCapacity(count, campaignDetailsList);
                         count++;
                     }
                 }
@@ -109,9 +112,9 @@ public class RevenueOptimization {
 
     }
 
-    private List<Long> getAllCampaignImpressionList(List<CampaignDetails> campaignDetailsList, Long weightCapacity) {
+    private TreeSet<Long> getAllCampaignImpressionList(List<CampaignDetails> campaignDetailsList, Long weightCapacity) {
 
-        List<Long> campaignCombination = new ArrayList();
+        TreeSet<Long> campaignCombination = new TreeSet();
 
         for (CampaignDetails campaignDetails : campaignDetailsList) {
 

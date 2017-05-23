@@ -60,7 +60,7 @@ public class KnapSackModified {
             }
         }
 
-        System.out.println("scaledCampaignList=" + scaledCampaignList);
+        System.out.println("scaledCampaignList=" + new Gson().toJson(scaledCampaignList));
 
         /**
          *
@@ -72,6 +72,9 @@ public class KnapSackModified {
             Long remainder = forecastedImpressions % campaignDetails.getImpressionsPerCampaign();
             remainderSet.add(remainder);
         }
+
+        remainderSet.add(10000l);
+
 
         System.out.println("remainder set " + remainderSet);
         /**
@@ -85,7 +88,7 @@ public class KnapSackModified {
 
         /** with highest remainder seen, do knapsack for original campaign list. The data produced here will be used in next step **/
 
-        while (count <= remainderSet.last()) {
+        while (count <= campaignCombination.first()) {
             updateMaxPossibleRevenueForTheCapacity(count, campaignDetailsList, false);
             count++;
         }
@@ -95,16 +98,27 @@ public class KnapSackModified {
         System.out.println("campaignCombination=" + campaignCombination);
 
 
+
         /** for all the possible data points, do the knapsack problem with scaled campaign list **/
 
-        for (Long currentCapacity : campaignCombination) {
+        for (Long currentCapacity : campaignCombination)
+        {
             updateMaxPossibleRevenueForTheCapacity(currentCapacity, scaledCampaignList, false);
         }
+
+
+//        Long currentCapacity = 1000l;
+//        Long count1 = 1l;
+//
+//        while (currentCapacity * count1 <= campaignCombination.last()) {
+//            updateMaxPossibleRevenueForTheCapacity(currentCapacity * count1, scaledCampaignList, false);
+//            count1++;
+//        }
 
         updateMaxPossibleRevenueForTheCapacity(forecastedImpressions, scaledCampaignList, true);
 
         /** return revenue **/
-        return memoizationUtil.getLastRevenue(forecastedImpressions, false);
+        return memoizationUtil.getLastRevenue(forecastedImpressions, true);
 
     }
 

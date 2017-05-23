@@ -57,7 +57,7 @@ public class NormalMemoizationUtil {
 
             System.out.println("impressionToMaxRevenue.first"+ impressionToMaxRevenue.firstKey().longValue());
 
-            System.out.println("impressionToMaxRevenue.last"+ impressionToMaxRevenue.firstKey().longValue());
+            System.out.println("impressionToMaxRevenue.last"+ impressionToMaxRevenue.lastKey().longValue());
 
             if (impressionToMaxRevenue != null && impressionToMaxRevenue.floorEntry(impression) != null) {
                 campaignCombination = impressionToMaxRevenue.floorEntry(impression).getValue().getNewCopy();
